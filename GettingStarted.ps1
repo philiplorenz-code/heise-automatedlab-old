@@ -7,6 +7,9 @@ Add-LabMachineDefinition -Name Win10Test -OperatingSystem 'Windows 10 Pro'
 Install-Lab
 Show-LabDeploymentSummary
 
+# Notification
+Send-ALNotification -Activity 'Installing Software' -Message 'Software being installed..' -Provider Toast,Ifttt
+
 # Install Software to TestLab-VM
 Install-LabSoftwarePackage -ComputerName Win10Test -Path $labSources\SoftwarePackages\Notepad++.exe -CommandLine /S
 

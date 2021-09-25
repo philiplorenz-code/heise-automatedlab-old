@@ -20,4 +20,4 @@ Copy-LabFileItem -Path 'C:\LabSources\2Copy' -ComputerName Win10Test -Destinatio
 Get-Lab -List
 
 # Remove Lab
-Remove-Lab GettingStarted
+Remove-Lab MyFirstLab

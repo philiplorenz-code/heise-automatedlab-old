@@ -54,14 +54,44 @@ $role = Get-LabMachineRoleDefinition -Role CaRoot @{
 
 Add-LabMachineDefinition -Name "DEMACA01" -IpAddress 192.168.123.12 -Roles $role
 
+# WebServer
+### Prüfen, ob installiert wurde
+Add-LabMachineDefinition -Name "DEMAWS01" -Roles WebServer
+
+
+
 # Clients
 ### Schaun, ob Ordner erstellt!
 $postInstallActivity = Get-LabPostInstallationActivity -ScriptFileName createusers.ps1 -DependencyFolder $labSources\PostInstallationActivities\Custom
 Add-LabMachineDefinition -Name "DEMAC01" -IpAddress 192.168.123.13 -OperatingSystem 'Windows 10 Pro' -PostInstallationActivity $postInstallActivity
 
+# Linux
+### Schauen, ob Linux VM ordentlich installiert
+Add-LabMachineDefinition -Name "DEMALIN01" -IpAddress 192.168.123.14 -OperatingSystem 'CentOS-7' 
 
 # Deployment
 Install-Lab
+
+
+#Install software to all lab machines
+### HIER noch Software hinzufügen!
+#$packs = @()
+#$packs += Get-LabSoftwarePackage -Path $labSources\SoftwarePackages\Notepad++.exe -CommandLine /S
+#$packs += Get-LabSoftwarePackage -Path $labSources\SoftwarePackages\winrar.exe -CommandLine /S
+#Install-LabSoftwarePackages -Machine (Get-LabVM -All) -SoftwarePackage $packs
+
+
+# WebServer Certificate
+### Schauen, ob Zertifikat gemapped wurde
+Enable-LabCertificateAutoenrollment -Computer -User -CodeSigning
+$cert = Request-LabCertificate -Subject "CN=demaws01.de.test.lab" -TemplateName "WebServer" -ComputerName "DEMAWS01" -PassThru
+
+Invoke-LabCommand -ActivityName 'Setup SSL Binding' -ComputerName "DEMAWS01" -ScriptBlock {
+    New-WebBinding -Name "Default Web Site" -IP "*" -Port 443 -Protocol https
+    Import-Module -Name WebAdministration
+    Get-Item -Path "Cert:\LocalMachine\My\$($args[0].Thumbprint)" | New-Item -Path IIS:\SslBindings\0.0.0.0!443
+} -ArgumentList $cert
+
 Show-LabDeploymentSummary -Detailed
 
 

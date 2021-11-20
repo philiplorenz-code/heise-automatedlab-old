@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="4" errors="0" failures="0" not-run="41" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2021-11-19" time="05:09:12">
+  <environment clr-version="4.0.30319.42000" user-domain="WIN-CJRDA7ARBC1" cwd="C:\Code\heise-automatedlab" platform="Microsoft Windows Server 2019 Standard Evaluation|C:\Windows|\Device\Harddisk0\Partition2" machine-name="WIN-CJRDA7ARBC1" nunit-version="2.5.8.0" os-version="10.0.17763" user="Administrator" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Success" success="True" time="10.3774" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="C:\Program Files\WindowsPowerShell\Modules\AutomatedLabTest\5.39.0\internal\tests\RootDC.tests.ps1" executed="True" result="Success" success="True" time="7.6279" asserts="0" description="C:\Program Files\WindowsPowerShell\Modules\AutomatedLabTest\5.39.0\internal\tests\RootDC.tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="[TestLab] DC Generic" executed="True" result="Success" success="True" time="5.4569" asserts="0" description="[TestLab] DC Generic">
+            <results>
+              <test-suite type="TestFixture" name="[TestLab] DC Generic.Role deployment successful" executed="True" result="Success" success="True" time="5.2993" asserts="0" description="[TestLab] DC Generic.Role deployment successful">
+                <results>
+                  <test-case description="[RootDC] Should return the correct amount of machines" name="[TestLab] DC Generic.Role deployment successful.[RootDC] Should return the correct amount of machines" time="1.1851" asserts="0" success="True" result="Success" executed="True" />
+                  <test-suite type="ParameterizedTest" name="[TestLab] DC Generic.Role deployment successful.DC01 should have ADWS running" executed="True" result="Success" success="True" time="0.4943" asserts="0" description="DC01 should have ADWS running">
+                    <results>
+                      <test-case description="DC01 should have ADWS running" name="[TestLab] DC Generic.Role deployment successful.DC01 should have ADWS running(DC01)" time="0.4943" asserts="0" success="True" result="Success" executed="True" />
+                    </results>
+                  </test-suite>
+                  <test-suite type="ParameterizedTest" name="[TestLab] DC Generic.Role deployment successful.DC01 should respond to ADWS calls" executed="True" result="Success" success="True" time="3.175" asserts="0" description="DC01 should respond to ADWS calls">
+                    <results>
+                      <test-case description="DC01 should respond to ADWS calls" name="[TestLab] DC Generic.Role deployment successful.DC01 should respond to ADWS calls(DC01)" time="3.175" asserts="0" success="True" result="Success" executed="True" />
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="[TestLab] RootDC specific" executed="True" result="Success" success="True" time="6.0791" asserts="0" description="[TestLab] RootDC specific">
+            <results>
+              <test-suite type="ParameterizedTest" name="[TestLab] RootDC specific.DC01 should hold PDC emulator FSMO role" executed="True" result="Success" success="True" time="0.6178" asserts="0" description="DC01 should hold PDC emulator FSMO role">
+                <results>
+                  <test-case description="DC01 should hold PDC emulator FSMO role" name="[TestLab] RootDC specific.DC01 should hold PDC emulator FSMO role(DC01)" time="0.6178" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

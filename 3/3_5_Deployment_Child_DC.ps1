@@ -62,18 +62,12 @@ Add-LabMachineDefinition -Name "DEMAWS01" -Roles WebServer
 $postInstallActivity = Get-LabPostInstallationActivity -ScriptFileName createusers.ps1 -DependencyFolder $labSources\PostInstallationActivities\Custom
 Add-LabMachineDefinition -Name "DEMAC01" -IpAddress 192.168.123.13 -OperatingSystem 'Windows 10 Pro' -PostInstallationActivity $postInstallActivity
 
-# Linux
-### Schauen, ob Linux VM ordentlich installiert
-Add-LabMachineDefinition -Name "DEMALIN01" -IpAddress 192.168.123.14 -OperatingSystem 'CentOS-7' -RhelPackage gnome-desktop
-
-
 
 # Deployment
 Install-Lab
 
 
 #Install software to all lab machines
-### Check, ob installiert!
 $packs = @()
 foreach ($installer in (Get-ChildItem $labSources\SoftwarePackages)){
     $installerpath = "$labSources\SoftwarePackages\" + $installer.Name
@@ -98,10 +92,5 @@ Write-Output "Setting up the lab took $($end - $start)"
 
 
 # TODOs
-## Software Installation
-## Ordner erstellen
-## Internet
-## Linux VM Install
-# AD User erstellen
-# IIS: Website deployment
+# AD User und Website Deployment ins Script aufnehmen
 # Allgemeine CMDlets herausfinden

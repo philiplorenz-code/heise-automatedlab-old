@@ -77,7 +77,13 @@ Install-LabSoftwarePackages -Machine (Get-LabVM -All) -SoftwarePackage $packs
 
 
 # Copy Files
-Copy-LabFileItem -Path 'C:\LabSources\2Copy' -ComputerName "DEMADC01" -DestinationFolderPath C:\Temp
+Copy-LabFileItem -Path 'C:\LabSources\CopyFiles' -ComputerName "DEMADC01" -DestinationFolderPath C:\
+Copy-LabFileItem -Path 'C:\LabSources\CopyFiles' -ComputerName "DEMAWS01" -DestinationFolderPath C:\
+
+
+# AD-Users and Website
+Invoke-LabCommand -ComputerName "DEMADC01" -ScriptBlock {Invoke-Expression "&'C:\CopyFiles\CreateADUsers.ps1'"}
+Invoke-LabCommand -ComputerName "DEMAWS01" -ScriptBlock {Invoke-Expression "&'C:\CopyFiles\DeployWebsite.ps1'"}
 
 
 
@@ -94,3 +100,4 @@ Write-Output "Setting up the lab took $($end - $start)"
 # TODOs
 # AD User und Website Deployment ins Script aufnehmen
 # Allgemeine CMDlets herausfinden
+

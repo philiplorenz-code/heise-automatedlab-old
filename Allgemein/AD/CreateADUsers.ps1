@@ -1,4 +1,6 @@
 Import-Module ActiveDirectory
+
+cd C:\CopyFiles
   
 # Importiere CSV:
 $ADUsers = Import-Csv ".\users.csv" -Delimiter ";"

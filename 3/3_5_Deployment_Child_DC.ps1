@@ -98,6 +98,5 @@ Write-Output "Setting up the lab took $($end - $start)"
 
 
 # TODOs
-# AD User und Website Deployment ins Script aufnehmen
 # Allgemeine CMDlets herausfinden
 

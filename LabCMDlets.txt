@@ -1,0 +1,42 @@
+https://automatedlab.org/en/latest/AutomatedLab/en-us/Enable-LabVMRemoting/
+Enable-LabVMRemoting -ComputerName <String[]> [<CommonParameters>]
+Enable-LabVMRemoting [-All] [<CommonParameters>]
+
+
+https://automatedlab.org/en/latest/AutomatedLab/en-us/Remove-LabVM/
+Remove-LabVM [-Name] <String[]> [<CommonParameters>]
+Remove-LabVM [-All] [<CommonParameters>]
+
+https://automatedlab.org/en/latest/AutomatedLab/en-us/Get-LabVMSnapshot/
+Get-LabVMSnapshot [[-ComputerName] <String[]>] [[-SnapshotName] <String>] [<CommonParameters>]
+
+https://automatedlab.org/en/latest/AutomatedLab/en-us/Get-LabVMRdpFile/
+Get-LabVMRdpFile -ComputerName <String[]> [-UseLocalCredential] [-Path <String>] [<CommonParameters>]
+Get-LabVMRdpFile [-UseLocalCredential] [-All] [-Path <String>] [<CommonParameters>]
+
+https://automatedlab.org/en/latest/AutomatedLab/en-us/Get-LabVMUptime/
+Get-LabVMUptime [-ComputerName] <String[]> [<CommonParameters>]
+Get-LabVMUptime -ComputerName FS1
+
+https://automatedlab.org/en/latest/AutomatedLab/en-us/Get-LabWindowsFeature/
+Get-LabWindowsFeature [-ComputerName] <String[]> [[-FeatureName] <String[]>] [-UseLocalCredential]
+ [[-ProgressIndicator] <Int32>] [-NoDisplay] [-AsJob] [<CommonParameters>]
+PS C:\> Get-LabWindowsFeature DC01,FS01 -FeatureName RSAT-AD-Tools
+
+https://automatedlab.org/en/latest/AutomatedLab/en-us/Get-LabVMUacStatus/
+Get-LabVMUacStatus [-ComputerName] <String[]> [<CommonParameters>]
+PS C:\> Get-LabVMUacStatus -ComputerName DC01,DC02
+
+https://automatedlab.org/en/latest/AutomatedLab/en-us/Get-LabVMStatus/
+Get-LabVMStatus [[-ComputerName] <String[]>] [-AsHashTable] [<CommonParameters>]
+
+https://automatedlab.org/en/latest/AutomatedLab/en-us/New-LabVM/
+New-LabVM -Name <String[]> [-CreateCheckPoints] [-ProgressIndicator <Int32>] [<CommonParameters>]
+
+https://automatedlab.org/en/latest/AutomatedLab/en-us/Save-LabVM/
+Save-LabVM [-Name] <String[]> [<CommonParameters>]
+
+https://automatedlab.org/en/latest/AutomatedLab/en-us/Start-LabVM/
+https://automatedlab.org/en/latest/AutomatedLab/en-us/Stop-LabVM/
+
+

@@ -11,6 +11,7 @@ Add-LabVirtualNetworkDefinition -Name $LabName -AddressSpace 192.168.123.0/24
 
 # Domain definition with the domain admin account
 Add-LabDomainDefinition -Name $domain -AdminUser $adminAcc -AdminPassword $adminPass
+Add-LabDomainDefinition -Name $domainchild -AdminUser $adminAcc -AdminPassword $adminPass
 Set-LabInstallationCredential -Username $adminAcc -Password $adminPass
 
 # Basic Parameters
@@ -30,6 +31,26 @@ $PSDefaultParameterValues = @{
 # Root DC
 Add-LabMachineDefinition -Name "DC01" -IpAddress 192.168.123.1 -DomainName $domain -Roles RootDC
 
+# Child DC
+$role = Get-LabMachineRoleDefinition -Role FirstChildDC @{
+    ParentDomain = $domain
+    NewDomain = 'de'
+    SiteName = 'Mannheim'
+    SiteSubnet = '192.168.123.0/24'
+}
+
+Add-LabMachineDefinition -Name "DEMADC01" -IpAddress 192.168.123.11 -Roles $role
+
+
+# CA
+$role = Get-LabMachineRoleDefinition -Role CaRoot @{
+    CACommonName = "MyLabRootCA1"
+    KeyLength = "2048"
+    ValidityPeriod = "Weeks"
+    ValidityPeriodUnits = "4"
+}
+
+Add-LabMachineDefinition -Name "DEMACA01" -IpAddress 192.168.123.12 -Roles $role
 
 # Run
 Install-Lab

@@ -1,9 +1,12 @@
 # Netwerk wird auch ohne direkte Angabe mit Default-Settings erstellt (Switch wird erstellt by increment 192.168.1.0)
 
+# General:
+$LabName = "TestLab"
+
 # Eigenes Netzwerk:
-$LabName = "EasyNet"
 New-LabDefinition -Name $LabName -DefaultVirtualizationEngine HyperV
 Add-LabVirtualNetworkDefinition -Name $LabName -AddressSpace 192.168.123.0/24
+
 Install-Lab
 Show-LabDeploymentSummary -Detailed
 
@@ -11,4 +14,4 @@ Show-LabDeploymentSummary -Detailed
 Get-Lab -List
 
 # Remove Lab
-Remove-Lab EasyNet
+Remove-Lab $LabName

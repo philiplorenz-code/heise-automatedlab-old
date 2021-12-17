@@ -18,7 +18,7 @@ Remove-LabVM -Name DEMACA01
 # Get Snapshot
 # https://automatedlab.org/en/latest/AutomatedLab/en-us/Get-LabVMSnapshot/
 Get-LabVMSnapshot -ComputerName DEMACL01
-Restore-LabVMSnapshot -ComputerName DEMADC01 -SnapshotName XYZ
+Restore-LabVMSnapshot -ComputerName DEMACL01 -SnapshotName "DEMACL01 - (12/17/2021 - 1:55:34 PM)"
 Remove-LabVMSnapshot -ComputerName DEMADC01
 
 # Get RDP Files

@@ -64,10 +64,20 @@ Install-Lab
 
 # Copy Files
 Copy-LabFileItem -Path 'C:\LabSources\CopyFiles' -ComputerName "DEMAWS01" -DestinationFolderPath C:\
-
+Copy-LabFileItem -Path 'C:\LabSources\CopyFiles' -ComputerName "DEMADC01" -DestinationFolderPath C:\
 
 # Run Scripts
 Invoke-LabCommand -ComputerName "DEMAWS01" -ScriptBlock {Invoke-Expression "&'C:\CopyFiles\DeployWebsite.ps1'"}
+Invoke-LabCommand -ComputerName "DEMADC01" -ScriptBlock {Invoke-Expression "&'C:\CopyFiles\CreateADUsers.ps1'"}
+
+
+#Install software to all lab machines
+$packs = @()
+foreach ($installer in (Get-ChildItem $labSources\SoftwarePackages)){
+    $installerpath = "$labSources\SoftwarePackages\" + $installer.Name
+    $packs += Get-LabSoftwarePackage -Path $installerpath -CommandLine /S
+}
+Install-LabSoftwarePackages -Machine (Get-LabVM -All) -SoftwarePackage $packs
 
 
 Show-LabDeploymentSummary -Detailed

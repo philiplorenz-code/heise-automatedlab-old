@@ -7,13 +7,13 @@ Get-LabVMStatus -ComputerName DEMADC01
 
 # Enable Remoting
 # https://automatedlab.org/en/latest/AutomatedLab/en-us/Enable-LabVMRemoting/
-Enable-LabVMRemoting -ComputerName DEMACA01
-Enter-PSSession -ComputerName DEMACA01 -Credential (Get-Credential)
+Enable-LabVMRemoting -ComputerName DEMADC01
+Enter-PSSession -ComputerName DEMADC01 -Credential (Get-Credential)
 
 
 # Remove VM
 # https://automatedlab.org/en/latest/AutomatedLab/en-us/Remove-LabVM/
-Remove-LabVM -Name DEMACA01
+Remove-LabVM -Name DEMAWS01
 
 # Get Snapshot
 # https://automatedlab.org/en/latest/AutomatedLab/en-us/Get-LabVMSnapshot/
@@ -32,10 +32,6 @@ Get-LabVMUptime -ComputerName DEMADC01
 # Install Windows Feature
 # https://automatedlab.org/en/latest/AutomatedLab/en-us/Get-LabWindowsFeature/
 Get-LabWindowsFeature DEMACL01 -FeatureName RSAT-AD-Tools
-
-# GET UAC Status
-# https://automatedlab.org/en/latest/AutomatedLab/en-us/Get-LabVMUacStatus/
-Get-LabVMUacStatus DEMACL01, DEMADC01
 
 # Start VM
 # https://automatedlab.org/en/latest/AutomatedLab/en-us/Start-LabVM/
